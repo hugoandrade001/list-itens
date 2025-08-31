@@ -39,45 +39,83 @@ A modern, real-time collaborative list management application that allows multip
 
 ## ⚡ Quick Start
 
+### 🚀 Super Simple Setup (Just 2 Commands!)
+
+```bash
+# 1. Clone and setup everything automatically
+git clone https://github.com/hugoandrade001/list-itens.git
+cd list-itens
+npm run setup
+
+# 2. Start both backend and frontend servers
+npm run dev:all
+```
+
+**That's it! 🎉** The application will be available at `http://localhost:3000`
+
+- Backend runs on `http://localhost:3001`
+- Frontend runs on `http://localhost:3000`
+- Database is automatically configured with Prisma + SQLite
+
+### Alternative: Manual Setup
+
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/hugoandrade001/list-itens.git
 cd list-itens
 ```
 
-### 2. Install backend dependencies
+### 2. Install all dependencies
 ```bash
+# Install backend dependencies
 npm install
-```
 
-### 3. Install frontend dependencies
-```bash
+# Install frontend dependencies
 cd frontend
 npm install
 cd ..
 ```
 
-### 4. Set up the database
+### 3. Set up the database
 ```bash
 npx prisma generate
 npx prisma db push
 ```
 
-### 5. Start the development servers
+### 4. Start the development servers
 
-**Backend** (runs on port 3001):
+**Option A: Both servers at once**
+```bash
+npm run dev:all
+```
+
+**Option B: Separate terminals**
+
+Terminal 1 - Backend (port 3001):
 ```bash
 npm run dev
 ```
 
-**Frontend** (runs on port 3000):
+Terminal 2 - Frontend (port 3000):
 ```bash
 cd frontend
 npm start
 ```
 
-### 6. Access the application
+### 5. Access the application
 Open your browser and navigate to `http://localhost:3000`
+
+## 📝 Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run setup` | **🎯 One-command setup** - Installs all dependencies and configures database |
+| `npm run dev:all` | **🚀 Start everything** - Runs both backend and frontend simultaneously |
+| `npm run dev` | Start backend server only (port 3001) |
+| `npm run dev:frontend` | Start frontend server only (port 3000) |
+| `npm run install:all` | Install dependencies for both backend and frontend |
+| `npm run db:setup` | Generate Prisma client and setup database |
+| `npm run db:reset` | Reset database (useful for development) |
 
 ## 🏗 Project Structure
 
