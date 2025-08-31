@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  lists      List[]
+  activities ActivityLog[]
+
+  @@map("users")
+}
+
+model List {
+  id        Int      @id @default(autoincrement())
+  title     String
+  description String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  ownerId   Int
+  owner     User     @relation(fields: [ownerId], references: [id])
+  items     ListItem[]
+  activities ActivityLog[]
+  
+  @@map("lists")
+}
+
+model ListItem {
+  id        Int      @id @default(autoincrement())
+  title     String
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  listId    Int
+  list      List     @relation(fields: [listId], references: [id], onDelete: Cascade)
+  activities ActivityLog[]
+  
+  @@map("list_items")
+}
+
+model ActivityLog {
+  id        Int      @id @default(autoincrement())
+  action    String   // "created", "updated", "deleted"
+  createdAt DateTime @default(now())
+  
+  // Relations
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  listId    Int?
+  list      List?    @relation(fields: [listId], references: [id])
+  itemId    Int?
+  item      ListItem? @relation(fields: [itemId], references: [id])
+  
+  @@map("activity_logs")
+}
