@@ -47,14 +47,13 @@ git clone https://github.com/hugoandrade001/list-itens.git
 cd list-itens
 npm run setup
 
-# 2. Start both backend and frontend servers
-npm run dev:all
+# 2. Start backend server
+npm run dev
 ```
 
 **That's it! 🎉** The application will be available at `http://localhost:3000`
 
-- Backend runs on `http://localhost:3001`
-- Frontend runs on `http://localhost:3000`
+- Backend runs on `http://localhost:4000
 - Database is automatically configured with Prisma + SQLite
 
 ### Alternative: Manual Setup
