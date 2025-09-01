@@ -90,17 +90,10 @@ npm run dev:all
 
 **Option B: Separate terminals**
 
-Terminal 1 - Backend (port 3001):
+Terminal 1 - Backend (port 4000):
 ```bash
 npm run dev
 ```
-
-Terminal 2 - Frontend (port 3000):
-```bash
-cd frontend
-npm start
-```
-
 ### 5. Access the application
 Open your browser and navigate to `http://localhost:3000`
 
